@@ -1,0 +1,18 @@
+<h1>Listing company_contacts</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @company_contacts.each do |company_contact| %>
+  <tr>
+    <td><%= link_to 'Show', company_contact %></td>
+    <td><%= link_to 'Edit', edit_company_contact_path(company_contact) %></td>
+    <td><%= link_to 'Destroy', company_contact, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New company_contact', new_company_contact_path %>

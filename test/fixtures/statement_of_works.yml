@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  engine_yard_contact_id: 1
+  company_contact_id: 1
+  company_id: 1
+  title: MyString
+  scope: MyText
+  no_hours: 1.5
+  est_fee: 1.5
+  add_terms: MyText
+
+two:
+  engine_yard_contact_id: 1
+  company_contact_id: 1
+  company_id: 1
+  title: MyString
+  scope: MyText
+  no_hours: 1.5
+  est_fee: 1.5
+  add_terms: MyText

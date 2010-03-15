@@ -1,0 +1,21 @@
+<h1>Listing engine yard contacts</h1>
+
+<table class="sortable">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+  </tr>
+
+<% @engine_yard_contacts.each do |engine_yard_contact| %>
+  <tr>
+	<td><%=h engine_yard_contact.name %></td>
+    <td><%=h engine_yard_contact.email %></td>
+    <td><%= link_to 'Edit', edit_engine_yard_contact_path(engine_yard_contact) %></td>
+    <td><%= link_to 'Destroy', engine_yard_contact, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New engine yard contact', new_engine_yard_contact_path %>

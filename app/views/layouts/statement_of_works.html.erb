@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>StatementOfWorks: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+<%= javascript_include_tag :defaults %>
+</head>
+<body>
+
+	<%= javascript_include_tag "sorttable.js" %>
+
+	    <div class="container">
+	      <div id="header">
+	        <br><%= image_tag("EY_logo.png", :alt => "sow", :class => "round") %>
+	        <ul class="navigation round">
+	          <li><%= link_to "Home", statement_of_works_path %></li>
+	          <li><%= link_to "companies", companies_path %></li>
+	          <li><%= link_to "Engine Yard contacts", engine_yard_contacts_path %></li>
+	          <li><%= link_to "Sign in", '#' %></li>
+	        </ul>
+	      </div>
+	      <div id="content" class="round">
+	        <%= yield %>
+	      </div>
+	    </div>
+</body>
+</html>

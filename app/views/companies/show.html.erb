@@ -1,0 +1,21 @@
+<p><b><%= @company.name%>'s conatcts:</b> </p>
+	
+	
+<table class="sortable" >
+  <tr>
+    <th>Contact Name</th>
+	<th>Contact email</th>
+  </tr>
+<% @contacts.each do |contact| %>
+  <% if contact.company_id == @company.id %>
+  <tr>
+    <td><%=h contact.name %></td>
+    <td><%=h contact.email %></td>
+    <td><%= link_to 'Edit Contact', edit_company_contact_path(contact) %></td>
+    <td><%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <%end%>
+<% end %>
+</table>
+<%= link_to 'add new contact',new_company_contact_path(:company_id => @company)%> | 
+<%= link_to 'Back', companies_path %>

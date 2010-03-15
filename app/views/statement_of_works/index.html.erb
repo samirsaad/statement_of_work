@@ -1,0 +1,32 @@
+
+<h1>Listing sows</h1>
+
+<table class="sortable", width=100%, cellspacing="20">
+  <tr>
+    <th>Title</th>
+    <th>Company</th>
+    <th>created at</th>
+	<th>Show SOW</th>
+	<th>Edit SOW</th>
+	<th>Delete SOW</th>
+
+<% @statement_of_works.each do |sow| %>
+  <tr>
+    <td><%=h sow.title %></td>
+    <td><%=h sow.company.name %></td> 
+    <td><%=h sow.created_at %></td>
+    <td><%= link_to 'Show', sow %></td>
+    <td><%= link_to 'Edit', edit_statement_of_work_path(sow) %></td>
+    <td><%= link_to 'Destroy', sow, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+
+
+<br />
+
+<%= link_to 'New sow', new_statement_of_work_path %>
+
+<br/>
+<br/>

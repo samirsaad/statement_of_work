@@ -1,13 +1,13 @@
 class StatementOfWorksController < ApplicationController
   
-  auto_complete_for :company, :name
-  auto_complete_for :company_contact, :name
-  auto_complete_for :engine_yard_contact, :name
+ # auto_complete_for :company, :name
+#  auto_complete_for :company_contact, :name
+ # auto_complete_for :engine_yard_contact, :name
   
   # GET /statement_of_works
   # GET /statement_of_works.xml
   def index
-    @statement_of_works = StatementOfWork.all
+    @statement_of_works = StatementOfWork.find(:all, :order => 'created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -33,7 +33,6 @@ class StatementOfWorksController < ApplicationController
   # GET /statement_of_works/new.xml
   def new
     @statement_of_work = StatementOfWork.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @statement_of_work }
@@ -44,6 +43,8 @@ class StatementOfWorksController < ApplicationController
   def edit
     @statement_of_work = StatementOfWork.find(params[:id])
     @company = Company.all
+    @comp = Company.new
+    @cont= 1
     @company_contacts = CompanyContact.all
     @engine_yard_contacts = EngineYardContact.all
   end
@@ -56,11 +57,20 @@ class StatementOfWorksController < ApplicationController
     company = Company.find_or_create_by_name(params[:company][:name])
   	@statement_of_work.company = company
   	
-  	contact = CompanyContact.find_or_create_by_name(params[:company_contact][:name])
+  	contact = CompanyContact.find_by_id(params[:statement_of_work][:company_contact_id])
   	@statement_of_work.company_contact = contact
 
-  	ey = EngineYardContact.find_or_create_by_name(params[:engine_yard_contact][:name])
+  	ey = EngineYardContact.find_or_create_by_id(params[:statement_of_work][:engine_yard_contact_id])
   	@statement_of_work.engine_yard_contact = ey
+  	
+  	k = rand(10 ** 13)
+  	t=0
+  	while (t == 0)
+  	  t= rand (9)
+  	end
+  	t =t* (10 ** 13)
+  	k = k+t
+  	@statement_of_work.id = k
 
     respond_to do |format|
       if @statement_of_work.save
@@ -79,13 +89,13 @@ class StatementOfWorksController < ApplicationController
   def update
     @statement_of_work = StatementOfWork.find(params[:id])
     
-    company = Company.find(params[:company_id])
+    company = Company.find(params[:statement_of_work][:company_id])
   	@statement_of_work.company = company
 
-  	contact = CompanyContact.find(params[:company_contact_id])
+  	contact = CompanyContact.find(params[:statement_of_work][:company_contact_id])
   	@statement_of_work.company_contact = contact
 
-  	ey = EngineYardContact.find(params[:engine_yard_contact_id])
+  	ey = EngineYardContact.find(params[:statement_of_work][:engine_yard_contact_id])
   	@statement_of_work.engine_yard_contact = ey
 
     respond_to do |format|

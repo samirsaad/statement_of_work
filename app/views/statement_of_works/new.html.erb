@@ -1,29 +1,32 @@
+<% javascript 'show' %>
+<%= stylesheet_link_tag 'widgEditor' %>
+<%= javascript_include_tag "widgEditor" %>
 <h1>New sow</h1>
 
 <% form_for(@statement_of_work) do |f| %>
   <%= f.error_messages %>
   <p>
     	<%= f.label "SOW Title: " %><br />
-    	<%= f.text_field :title %>
+		<%= f.text_field :title %>
   </p>
 	<p>
-    	<%= f.label "Company name: " %><br />
-		<%= text_field_with_auto_complete :company, :name %>
+		<%= f.label "Company Name: " %><br />		
+		<%= text_field_with_auto_complete :company, :name, { :size => 15 }, { :url => formatted_companies_path(:js), :method => :get, :param_name => 'search' } %>
   </p>
-	
 
-  <p>
-    <%= f.label "Scope of Work: " %><br />
-    <%= f.text_area :scope %>
-  </p>
-  <p>
-    <%= f.label "Customer Project Manager Name: " %><br />
-      <%= text_field_with_auto_complete :company_contact, :name %>
-  </p>
+	<p id="state_field">
+  		<label for="person_state_id">Company Contact:</label><br />
+  		<%= f.collection_select :company_contact_id, CompanyContact.find(:all), :id, :name, :prompt => "Select a Company first then a contact" %>
+	</p>
   <p>
     <%= f.label "Engine yard Project Manager Name: " %><br />
-    <%= text_field_with_auto_complete :engine_yard_contact, :name %>
+	<%= f.collection_select :engine_yard_contact_id, EngineYardContact.find(:all), :id, :name, :prompt => 	"Select an Engine Yard Contact" %> 
+	
+  <p>
+    <%= f.label "Scope of Work: " %><br />
+    <%= f.text_area :scope, :class=>"widgEditor" %>
   </p>
+
   <p>
     <%= f.label "Numbers of Hours needed:" %><br />
     <%= f.text_field :no_hours %>
@@ -33,8 +36,8 @@
     <%= f.text_field :est_fee %>
   </p>
   <p>
-    <%= f.label "Additional Terms:" %><br />
-    <%= f.text_area :add_terms %>
+    <%= f.label "Additional Terms:" %><br/>
+    <%= f.text_area :add_terms, :class=>"widgEditor" %>
 
   <p>
     <%= f.submit 'Create' %>

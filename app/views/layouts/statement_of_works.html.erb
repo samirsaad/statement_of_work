@@ -5,12 +5,12 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>StatementOfWorks: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold' %>
-<%= javascript_include_tag :defaults %>
-</head>
-<body>
-
-	<%= javascript_include_tag "sorttable.js" %>
+  	<%= stylesheet_link_tag 'scaffold', :media => 'screen' %>
+	<%= stylesheet_link_tag 'print', :media => 'print' %>
+	<%= javascript_include_tag :defaults %>
+	<%= yield(:head)%>
+	</head>
+	<body>
 
 	    <div class="container">
 	      <div id="header">
@@ -26,5 +26,5 @@
 	        <%= yield %>
 	      </div>
 	    </div>
-</body>
+	</body>
 </html>

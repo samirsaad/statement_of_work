@@ -1,0 +1,27 @@
+var states = new Array();
+<% for state in @states -%>
+  states.push(new Array('<%= state.company.name %>', '<%=h state.name %>', <%= state.id %>));
+<% end -%>
+function countrySelected() {
+  country_id = $('company_name').getValue();
+  options = $('statement_of_work_company_contact_id').options;
+  options.length = 1;
+  states.each(function(state) {
+    if (state[0] == country_id) {
+      options[options.length] = new Option(state[1], state[2]);
+    }
+  });
+}
+function countrySelecteds() {
+	
+	$('state_field').hide();
+	country_id = $('company_name').getValue();
+	counter++;
+	if (country_id == "howcast")
+	 $('state_field').show();
+}
+document.observe('dom:loaded', function() {
+  countrySelected();
+$('company_name').observe('blur', countrySelected);
+
+});

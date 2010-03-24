@@ -4,7 +4,7 @@ class CompanyContactsController < ApplicationController
   # GET /company_contacts
   # GET /company_contacts.xml
   def index
-    @company_contacts = CompanyContact.all
+    @company_contacts = CompanyContact.find(:all, :conditions => ['company_id LIKE ?', "%#{params[:search]}%"])
 
   end
 

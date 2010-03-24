@@ -1,4 +1,8 @@
-	<td><%= link_to "Printable Sow (PDF)", :controller => "statement_of_works", :action => "show", :id => @statement_of_work, :format => "pdf" %></td>
+	<div id="print_link">
+	<td><%= link_to_function("Print this Page", "javascript:window.print()") %></td>
+	</div>
+<div id="for_print_display">
+	
 <h1><p align="center"><b>ENGINE YARD</b></p>
 <p align="center" ><b>STATEMENT OF WORK</b></p></h1>
 <p align="justify">
@@ -28,7 +32,7 @@ Engine Yard Project Manager:
 </p>
 
 <p align="justify"> <b>Fees</b><br>
-This SOW will be provided to Customer on a time and materials basis with Engine Yard time charged at $250 per hour. Based upon Engine Yard's current understanding of the project requirements, it is estimated that this project will take <b><%=h @statement_of_work.no_hours %></b> hours of Engine Yard time. The estimated fee for this project is  <b> <%=h number_to_currency(@statement_of_work.est_fee) %></b>. 
+This SOW will be provided to Customer on a time and materials basis with Engine Yard time charged at $250 per hour. Based upon Engine Yard's current understanding of the project requirements, it is estimated that this project will take <b><%=h @statement_of_work.no_hours.to_i %></b> hours of Engine Yard time. The estimated fee for this project is  <b> <%=h number_to_currency(@statement_of_work.est_fee) %></b>. 
 </p>
 
 
@@ -67,5 +71,8 @@ Engine Yard will use commercially reasonable efforts to perform the services ass
 </tr>
 </table> 
 <br>
-<%= link_to 'Edit', edit_statement_of_work_path(@statement_of_work) %> |
-<%= link_to 'Back', statement_of_works_path %>
+</div>
+<div id="footer_navigation">
+	<%= link_to 'Edit', edit_statement_of_work_path(@statement_of_work) %> |
+	<%= link_to 'Back', statement_of_works_path %>
+</div>

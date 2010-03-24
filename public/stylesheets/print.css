@@ -1,0 +1,13 @@
+div#header {
+display:none;
+}
+div#print_link {
+display:none;
+}
+
+div#for_print_display {
+display:print;
+}
+div#footer_navigation {
+display:none;
+}

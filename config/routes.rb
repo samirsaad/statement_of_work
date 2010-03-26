@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.resources :javascripts
+  map.resources :monitors
   map.resources :engine_yard_contacts
 
   map.resources :companies do |company|
@@ -8,6 +8,8 @@ ActionController::Routing::Routes.draw do |map|
   end 
   map.resources :company_contacts
   map.resources :statement_of_works 
+  map.root :controller => :statement_of_works
+  
   
 
   # The priority is based upon order of creation: first created -> highest priority.

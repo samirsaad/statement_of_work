@@ -5,6 +5,7 @@ class CreateStatementOfWorks < ActiveRecord::Migration
       t.integer :company_contact_id
       t.integer :company_id
       t.string :title
+      t.string :slug
       t.text :scope
       t.float :no_hours
       t.float :est_fee

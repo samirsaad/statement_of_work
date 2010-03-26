@@ -1,5 +1,5 @@
 class StatementOfWorksController < ApplicationController
-  
+  require 'digest/md5'
  # auto_complete_for :company, :name
 #  auto_complete_for :company_contact, :name
  # auto_complete_for :engine_yard_contact, :name
@@ -18,7 +18,7 @@ class StatementOfWorksController < ApplicationController
   # GET /statement_of_works/1
   # GET /statement_of_works/1.xml
   def show
-    @statement_of_work = StatementOfWork.find(params[:id])
+    @statement_of_work = StatementOfWork.find_by_slug(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,7 +41,7 @@ class StatementOfWorksController < ApplicationController
 
   # GET /statement_of_works/1/edit
   def edit
-    @statement_of_work = StatementOfWork.find(params[:id])
+    @statement_of_work = StatementOfWork.find_by_slug(params[:id])
     @company = Company.all
     @comp = Company.new
     @cont= 1
@@ -63,14 +63,7 @@ class StatementOfWorksController < ApplicationController
   	ey = EngineYardContact.find_or_create_by_id(params[:statement_of_work][:engine_yard_contact_id])
   	@statement_of_work.engine_yard_contact = ey
   	
-  	k = rand(10 ** 13)
-  	t=0
-  	while (t == 0)
-  	  t= rand (9)
-  	end
-  	t =t* (10 ** 13)
-  	k = k+t
-  	@statement_of_work.id = k
+  	#@statement_of_work.id = Digest::MD5.digest("#{Time.now.utc} #{@statement_of_work.id}")
 
     respond_to do |format|
       if @statement_of_work.save
@@ -87,7 +80,7 @@ class StatementOfWorksController < ApplicationController
   # PUT /statement_of_works/1
   # PUT /statement_of_works/1.xml
   def update
-    @statement_of_work = StatementOfWork.find(params[:id])
+    @statement_of_work = StatementOfWork.find_by_slug(params[:id])
     
     company = Company.find(params[:statement_of_work][:company_id])
   	@statement_of_work.company = company
@@ -113,7 +106,7 @@ class StatementOfWorksController < ApplicationController
   # DELETE /statement_of_works/1
   # DELETE /statement_of_works/1.xml
   def destroy
-    @statement_of_work = StatementOfWork.find(params[:id])
+    @statement_of_work = StatementOfWork.find_by_slug(params[:id])
     @statement_of_work.destroy
 
     respond_to do |format|

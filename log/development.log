@@ -28386,3 +28386,57 @@ Rendering statement_of_works/index
   [4;36;1mCompany Load (0.3ms)[0m   [0;1mSELECT * FROM "companies" WHERE ("companies"."id" = 1) [0m
   [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "companies" WHERE ("companies"."id" = 1) [0m
 Completed in 146ms (View: 140, DB: 2) | 200 OK [http://localhost/]
+
+
+Processing StatementOfWorksController#edit (for 127.0.0.1 at 2010-03-26 14:00:35) [GET]
+  Parameters: {"id"=>"1269635572asdsdf"}
+  [4;36;1mStatementOfWork Load (0.3ms)[0m   [0;1mSELECT * FROM "statement_of_works" WHERE ("statement_of_works"."slug" = '1269635572asdsdf') LIMIT 1[0m
+  [4;35;1mCompany Load (0.2ms)[0m   [0mSELECT * FROM "companies" [0m
+  [4;36;1mCompanyContact Load (0.3ms)[0m   [0;1mSELECT * FROM "company_contacts" [0m
+  [4;35;1mEngineYardContact Load (0.2ms)[0m   [0mSELECT * FROM "engine_yard_contacts" [0m
+Rendering template within layouts/statement_of_works
+Rendering statement_of_works/edit
+
+ActionView::TemplateError (undefined method `javascript' for #<ActionView::Base:0x1035093b8>) on line #1 of app/views/statement_of_works/edit.html.erb:
+1: <% javascript 'show2' %>
+2: <%= stylesheet_link_tag 'widgEditor' %>
+3: <%= javascript_include_tag "widgEditor" %>
+4: <h1>Editing sow</h1>
+
+    app/views/statement_of_works/edit.html.erb:1
+
+Rendered rescues/_trace (36.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StatementOfWorksController#edit (for 127.0.0.1 at 2010-03-26 14:01:00) [GET]
+  Parameters: {"id"=>"1269635572asdsdf"}
+  [4;36;1mStatementOfWork Load (0.3ms)[0m   [0;1mSELECT * FROM "statement_of_works" WHERE ("statement_of_works"."slug" = '1269635572asdsdf') LIMIT 1[0m
+  [4;35;1mCompany Load (0.2ms)[0m   [0mSELECT * FROM "companies" [0m
+  [4;36;1mCompanyContact Load (0.3ms)[0m   [0;1mSELECT * FROM "company_contacts" [0m
+  [4;35;1mEngineYardContact Load (0.3ms)[0m   [0mSELECT * FROM "engine_yard_contacts" [0m
+Rendering template within layouts/statement_of_works
+Rendering statement_of_works/edit
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "companies" [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "company_contacts" [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "engine_yard_contacts" [0m
+Completed in 36ms (View: 20, DB: 1) | 200 OK [http://localhost/statement_of_works/1269635572asdsdf/edit]
+
+
+Processing StatementOfWorksController#1269635572asdsdf to css (for 127.0.0.1 at 2010-03-26 14:01:01) [GET]
+  Parameters: {"id"=>"widgContent"}
+
+ActionController::UnknownAction (No action responded to 1269635572asdsdf. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing StatementOfWorksController#1269635572asdsdf to css (for 127.0.0.1 at 2010-03-26 14:01:01) [GET]
+  Parameters: {"id"=>"widgContent"}
+
+ActionController::UnknownAction (No action responded to 1269635572asdsdf. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)

@@ -3,7 +3,7 @@ var states = new Array();
   states.push(new Array('<%= state.company.name %>', '<%=h state.name %>', <%= state.id %>));
 <% end -%>
 function countrySelected() {
-  console.log('foo bar')
+  //console.log('foo1')
   country_id = $('company_name').getValue();
   options = $('statement_of_work_company_contact_id').options;
   options.length = 1;
@@ -13,16 +13,8 @@ function countrySelected() {
     }
   });
 }
-function countrySelecteds() {
-	
-	$('state_field').hide();
-	country_id = $('company_name').getValue();
-	counter++;
-	if (country_id == "howcast")
-	 $('state_field').show();
-}
+
 document.observe('dom:loaded', function() {
   countrySelected();
 $('company_name').observe('blur', countrySelected);
-
 });

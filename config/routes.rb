@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.resources :monitors
+  map.resources :monitor_edits
   map.resources :engine_yard_contacts
 
   map.resources :companies do |company|

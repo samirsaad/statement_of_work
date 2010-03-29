@@ -1,0 +1,20 @@
+var states = new Array();
+<% for state in @states -%>
+  states.push(new Array(<%= state.company.id %>, '<%=h state.name %>', <%= state.id %>));
+<% end -%>
+function countrySelecteds() {  
+  	country_id = $('statement_of_work_company_id').getValue();	
+  	options = $('statement_of_work_company_contact_id').options;
+  	options.length = 1;
+  	states.each(function(state) {
+    if (state[0] == country_id) {
+		options[options.length] = new Option(state[1], state[2]);
+    }
+  });
+
+}
+document.observe('dom:loaded', function() {
+  countrySelecteds();
+$('statement_of_work_company_id').observe('blur', countrySelecteds);
+
+});

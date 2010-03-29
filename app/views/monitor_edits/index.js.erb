@@ -3,9 +3,14 @@ var states = new Array();
   states.push(new Array(<%= state.company.id %>, '<%=h state.name %>', <%= state.id %>));
 <% end -%>
 function countrySelecteds() {  
+	current = $('statement_of_work_company_contact_id').getValue();
+	current2 = $('statement_of_work_company_contact_id').options[current-1].text;
+	//console.log(current2);
   	country_id = $('statement_of_work_company_id').getValue();	
   	options = $('statement_of_work_company_contact_id').options;
-  	options.length = 1;
+  	options.length = 0;
+	 options[options.length] = new Option(current2,current);
+
   	states.each(function(state) {
     if (state[0] == country_id) {
 		options[options.length] = new Option(state[1], state[2]);
